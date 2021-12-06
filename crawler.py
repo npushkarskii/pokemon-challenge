@@ -27,11 +27,11 @@ class PokemonSpider(scrapy.Spider):
       
         NAME_SELECTOR = '#main h1 ::text'
         IMAGE_SELECTOR = 'a[rel="lightbox"] ::attr(href)'
-        TYPE_SELECTOR = '.vitals-table .type-icon ::text'
+        TYPE_SELECTOR = '.tabset-basics .vitals-table td a.type-icon ::text'
         yield {
             'name': response.css(NAME_SELECTOR).extract_first(),
             'image': response.css(IMAGE_SELECTOR).extract_first(),
-            'type': response.css(TYPE_SELECTOR).extract()
+            'type': list(set(response.css(TYPE_SELECTOR).extract()))
         }
 
 
