@@ -1,0 +1,28 @@
+2021-12-06 11:37:23 DEBUG [CoveoPush.py:172 __init__()] 
+
+
+2021-12-06 11:37:23 DEBUG [CoveoPush.py:173 __init__()] ------------------------------
+2021-12-06 11:37:23 INFO  [CoveoPush.py:174 __init__()] Pushing to source pokemonchallengepebfwi56-tymrhcjeplqwiacezf4rr2cice
+2021-12-06 11:37:23 DEBUG [CoveoDocument.py:214 SetData()] SetData
+2021-12-06 11:37:23 DEBUG [CoveoDocument.py:357 AddMetadata()] connectortype: CSV
+2021-12-06 11:37:23 DEBUG [CoveoDocument.py:382 SetAllowedAndDeniedPermissions()] SetAllowedAndDeniedPermissions
+2021-12-06 11:37:23 INFO  [CoveoPush.py:751 AddSingleDocument()] https://pokemondb.net/pokedex/national
+2021-12-06 11:37:23 INFO  [CoveoPush.py:453 UpdateSourceStatus()] Changing status to REBUILD
+2021-12-06 11:37:23 DEBUG [CoveoPush.py:249 GetStatusUrl()] https://api.cloud.coveo.com/push/v1/organizations/pokemonchallengepebfwi56/sources/pokemonchallengepebfwi56-tymrhcjeplqwiacezf4rr2cice/status
+2021-12-06 11:37:23 DEBUG [CoveoPush.py:218 GetRequestHeaders()] GetRequestHeaders
+2021-12-06 11:37:23 DEBUG [connectionpool.py:957 _new_conn()] Starting new HTTPS connection (1): api.cloud.coveo.com:443
+2021-12-06 11:37:25 DEBUG [connectionpool.py:428 _make_request()] https://api.cloud.coveo.com:443 "POST /push/v1/organizations/pokemonchallengepebfwi56/sources/pokemonchallengepebfwi56-tymrhcjeplqwiacezf4rr2cice/status?statusType=REBUILD HTTP/1.1" 201 4
+2021-12-06 11:37:25 DEBUG [CoveoPush.py:434 CheckReturnCode()] 201
+2021-12-06 11:37:25 DEBUG [CoveoPush.py:633 UploadDocumentIfTooLarge()] size = 33
+2021-12-06 11:37:25 DEBUG [CoveoPush.py:661 AddUpdateDocumentRequest()] {'documentId': 'https://pokemondb.net/pokedex/national'}
+2021-12-06 11:37:25 DEBUG [CoveoPush.py:351 GetUpdateDocumentUrl()] https://api.cloud.coveo.com/push/v1/organizations/pokemonchallengepebfwi56/sources/pokemonchallengepebfwi56-tymrhcjeplqwiacezf4rr2cice/documents
+2021-12-06 11:37:25 DEBUG [CoveoPush.py:218 GetRequestHeaders()] GetRequestHeaders
+2021-12-06 11:37:25 DEBUG [connectionpool.py:957 _new_conn()] Starting new HTTPS connection (1): api.cloud.coveo.com:443
+2021-12-06 11:37:25 DEBUG [connectionpool.py:428 _make_request()] https://api.cloud.coveo.com:443 "PUT /push/v1/organizations/pokemonchallengepebfwi56/sources/pokemonchallengepebfwi56-tymrhcjeplqwiacezf4rr2cice/documents?documentId=https%3A%2F%2Fpokemondb.net%2Fpokedex%2Fnational HTTP/1.1" 202 4
+2021-12-06 11:37:25 DEBUG [CoveoPush.py:434 CheckReturnCode()] 202
+2021-12-06 11:37:25 INFO  [CoveoPush.py:453 UpdateSourceStatus()] Changing status to IDLE
+2021-12-06 11:37:25 DEBUG [CoveoPush.py:249 GetStatusUrl()] https://api.cloud.coveo.com/push/v1/organizations/pokemonchallengepebfwi56/sources/pokemonchallengepebfwi56-tymrhcjeplqwiacezf4rr2cice/status
+2021-12-06 11:37:25 DEBUG [CoveoPush.py:218 GetRequestHeaders()] GetRequestHeaders
+2021-12-06 11:37:25 DEBUG [connectionpool.py:957 _new_conn()] Starting new HTTPS connection (1): api.cloud.coveo.com:443
+2021-12-06 11:37:26 DEBUG [connectionpool.py:428 _make_request()] https://api.cloud.coveo.com:443 "POST /push/v1/organizations/pokemonchallengepebfwi56/sources/pokemonchallengepebfwi56-tymrhcjeplqwiacezf4rr2cice/status?statusType=IDLE HTTP/1.1" 201 4
+2021-12-06 11:37:26 DEBUG [CoveoPush.py:434 CheckReturnCode()] 201
