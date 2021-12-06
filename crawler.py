@@ -1,12 +1,15 @@
+import scrapy
+from scrapy.crawler import CrawlerProcess
+
 from coveopush import CoveoPush
 from coveopush import Document
 from coveopush import CoveoPermissions
 from coveopush import CoveoConstants
-import scrapy
 
 
 class PokemonSpider(scrapy.Spider):
     name = "pokemon_spider"
+    custom_settings = {"FEEDS":{"results.json":{"format":"json"}}}
     start_urls = ['https://pokemondb.net/pokedex/national']
 
     def parse(self, response):
@@ -28,6 +31,7 @@ class PokemonSpider(scrapy.Spider):
         NAME_SELECTOR = '#main h1 ::text'
         IMAGE_SELECTOR = 'a[rel="lightbox"] ::attr(href)'
         TYPE_SELECTOR = '.tabset-basics .vitals-table td a.type-icon ::text'
+
         yield {
             'name': response.css(NAME_SELECTOR).extract_first(),
             'image': response.css(IMAGE_SELECTOR).extract_first(),
@@ -37,8 +41,10 @@ class PokemonSpider(scrapy.Spider):
 
 
 
-
-
+if __name__ == "__main__":
+    process = CrawlerProcess()
+    process.crawl(PokemonSpider)
+    process.start()
 
 
 # sourceId = 'pokemonchallengepebfwi56-tymrhcjeplqwiacezf4rr2cice'
