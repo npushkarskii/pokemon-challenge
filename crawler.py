@@ -1,6 +1,8 @@
 import scrapy
 from scrapy.crawler import CrawlerProcess
 
+import time
+
 from coveopush import CoveoPush
 from coveopush import Document
 from coveopush import CoveoPermissions
@@ -33,6 +35,7 @@ class PokemonSpider(scrapy.Spider):
         TYPE_SELECTOR = '.tabset-basics .vitals-table td a.type-icon ::text'
 
         yield {
+            'url': response.url,
             'name': response.css(NAME_SELECTOR).extract_first(),
             'image': response.css(IMAGE_SELECTOR).extract_first(),
             'type': list(set(response.css(TYPE_SELECTOR).extract()))
@@ -44,8 +47,40 @@ class PokemonSpider(scrapy.Spider):
 if __name__ == "__main__":
     process = CrawlerProcess()
     process.crawl(PokemonSpider)
+
+    sourceId = 'pokemonchallengepebfwi56-tymrhcjeplqwiacezf4rr2cice'
+    orgId = 'pokemonchallengepebfwi56'
+    apiKey = 'xx0ff4f49e-ddda-45af-a9c0-0e7d899e06db'
+
+    push = CoveoPush.Push(sourceId, orgId, apiKey)
+
+    user_email = "npushkarskii@coveo.com"
+    my_permissions = CoveoPermissions.PermissionIdentity(CoveoConstants.Constants.PermissionIdentityType.User, "", user_email)
+    allowAnonymous = True
+
+    def item_scraped(item, response, spider):
+        print('=============> Item scraped:', item)
+
+        mydoc = Document(item['url'])
+        mydoc.Title = item['name']
+        mydoc.AddMetadata("pokemonimage", item['image'])
+        mydoc.AddMetadata("pokemontype", item['type'])
+        
+
+        mydoc.SetAllowedAndDeniedPermissions([my_permissions], [], allowAnonymous)
+
+        push.AddSingleDocument(mydoc) 
+        
+
+    for crawler in process.crawlers:
+        crawler.signals.connect(item_scraped, signal=scrapy.signals.item_scraped)
+
+
+
     process.start()
 
+
+   
 
 # sourceId = 'pokemonchallengepebfwi56-tymrhcjeplqwiacezf4rr2cice'
 # orgId = 'pokemonchallengepebfwi56'
