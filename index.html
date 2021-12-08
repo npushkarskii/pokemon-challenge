@@ -22,9 +22,7 @@
         </div>
         <div class="coveo-main-section">
           <div class="coveo-facet-column">
-            <div class="CoveoDynamicFacet" data-title="Type" data-field="@objecttype" data-tab="All"></div>
-            <div class="CoveoDynamicFacet" data-title="FileType" data-field="@filetype" data-tab="All"></div>
-            <div class="CoveoDynamicFacet" data-title="Author" data-field="@author" data-tab="All"></div>
+            <div class="CoveoDynamicFacet" data-title="Type" data-field="@pokemontype" data-number-of-values="8"></div>
           </div>
           <div class="coveo-results-column">
             <div class="CoveoShareQuery"></div>
@@ -54,8 +52,7 @@
               <script id="Default" class="result-template" type="text/html" data-layout="list">
                 <div class="coveo-result-frame">
                   <div class="coveo-result-cell" style="vertical-align:top;text-align:center;width:32px;">
-                    <span class="CoveoIcon" data-small="true" data-with-label="false"></span>
-                    <div class="CoveoQuickview"></div>
+                    <div class="CoveoImageFieldValue" data-field="@pokemonimage" data-width='100'></div>
                   </div>
                   <div class="coveo-result-cell" style="vertical-align: top;padding-left: 16px;">
                     <div class="coveo-result-row" style="margin-top:0;">
