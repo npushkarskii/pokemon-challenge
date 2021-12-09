@@ -32,7 +32,7 @@ class PokemonSpider(scrapy.Spider):
       
         NAME_SELECTOR = '#main h1 ::text'
         IMAGE_SELECTOR = 'a[rel="lightbox"] ::attr(href)'
-        TYPE_SELECTOR = '.tabset-basics .vitals-table td a.type-icon ::text'
+        TYPE_SELECTOR = '.tabset-basics .sv-tabs-panel.active .vitals-table td a.type-icon ::text'
         GENERATION = '#main .grid-row abbr ::text'
 
         yield {
