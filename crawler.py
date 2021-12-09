@@ -33,12 +33,14 @@ class PokemonSpider(scrapy.Spider):
         NAME_SELECTOR = '#main h1 ::text'
         IMAGE_SELECTOR = 'a[rel="lightbox"] ::attr(href)'
         TYPE_SELECTOR = '.tabset-basics .vitals-table td a.type-icon ::text'
+        GENERATION = '#main .grid-row abbr ::text'
 
         yield {
             'url': response.url,
             'name': response.css(NAME_SELECTOR).extract_first(),
             'image': response.css(IMAGE_SELECTOR).extract_first(),
-            'type': list(set(response.css(TYPE_SELECTOR).extract()))
+            'type': list(set(response.css(TYPE_SELECTOR).extract())),
+            'generation': response.css(GENERATION).extract_first()
         }
 
 
@@ -65,6 +67,7 @@ if __name__ == "__main__":
         mydoc.Title = item['name']
         mydoc.AddMetadata("pokemonimage", item['image'])
         mydoc.AddMetadata("pokemontype", item['type'])
+        mydoc.AddMetadata("pokemongeneration", item['generation'])
         
 
         mydoc.SetAllowedAndDeniedPermissions([my_permissions], [], allowAnonymous)
